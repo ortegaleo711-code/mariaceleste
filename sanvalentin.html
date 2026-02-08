@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>María Celeste 💖</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+      font-family: Arial, sans-serif;
+    }
+
+    .card {
+      background: white;
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+      max-width: 340px;
+      text-align: center;
+    }
+
+    h1 {
+      margin-bottom: 15px;
+    }
+
+    img {
+      width: 180px;
+      margin: 20px 0;
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      margin-top: 10px;
+    }
+
+    button {
+      flex: 1;
+      border: none;
+      padding: 15px 0;
+      font-size: 18px;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    #yes {
+      background-color: #ff4d6d;
+      color: white;
+    }
+
+    #no {
+      background-color: #ccc;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- PANTALLA 1 -->
+  <div class="card" id="screen1">
+    <h1>María Celeste 💖<br>¿Quieres ser mi San Valentín?</h1>
+
+    <img src="https://i.imgur.com/lbcXSxu.gif" alt="Bibble triste">
+
+    <div class="buttons">
+      <button id="yes">Sí 💖</button>
+      <button id="no">No 😒</button>
+    </div>
+  </div>
+
+  <!-- PANTALLA 2 -->
+  <div class="card" id="screen2" style="display:none;">
+    <h1>Sabía que dirías que sí 🥹💖</h1>
+
+    <img src="https://i.imgur.com/8LmYFak.gif" alt="GIF feliz">
+  </div>
+
+  <script>
+    const yesBtn = document.getElementById("yes");
+    const noBtn = document.getElementById("no");
+    const screen1 = document.getElementById("screen1");
+    const screen2 = document.getElementById("screen2");
+
+    let yesScale = 1;
+    let noScale = 1;
+
+    noBtn.addEventListener("click", () => {
+      yesScale += 0.3;
+      noScale -= 0.15;
+
+      yesBtn.style.transform = `scale(${yesScale})`;
+      noBtn.style.transform = `scale(${noScale})`;
+
+      if (noScale <= 0.3) {
+        noBtn.style.display = "none";
+      }
+    });
+
+    yesBtn.addEventListener("click", () => {
+      screen1.style.display = "none";
+      screen2.style.display = "block";
+    });
+  </script>
+
+</body>
+</html>
